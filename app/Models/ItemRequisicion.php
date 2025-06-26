@@ -18,7 +18,7 @@ class ItemRequisicion extends Model
 
     public function requisicion()
     {
-        //return $this->belongsTo(Requisicion::class, 'requisicion_id'); //Norvin
+        return $this->belongsTo(Requisicion::class, 'requisicion_id'); //Norvin
     }
 
     public function material()

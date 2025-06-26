@@ -4,33 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ItemRequisicion;
-use App\Models\Categoria;
-use App\Models\MaterialUnidad;
+use App\Models\Material;
 
-class Material extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'codigo',
-        'unidadMedida',
-        'descripcion',
-        'ubicacion',
+        'nombre',
     ];
 
-    public function items()
+    public function materiales()
     {
-       // return $this->hasMany(ItemRequisicion::class, 'material_id');
-    }
-
-    public function categoria()
-    {
-        //return $this->belongsTo(Categoria::class, 'categoria_id');
-    }
-
-    public function unidades()
-    {
-        //return $this->hasMany(MaterialUnidad::class, 'material_id');
+        return $this->hasMany(Material::class, 'categoria_id');
     }
 }

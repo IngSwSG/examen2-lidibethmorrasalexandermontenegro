@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Material;
 
 class MaterialController extends Controller
 {
@@ -20,7 +21,16 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $request->validate([
+            'codigo' => 'required|integer',
+            'unidad_medida' => 'required|string',
+            'descripcion' => 'required|string',
+            'ubicacion' => 'required|string',
+            'categoria_id' => 'required|exists:categorias,id',
+        ]);
+
+        $material = Material::create($request->all());
+        return response()->json($material, 201);
     }
 
     /**
@@ -36,7 +46,17 @@ class MaterialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'codigo' => 'integer',
+            'unidad_medida' => 'string',
+            'descripcion' => 'string',
+            'ubicacion' => 'string',
+            'categoria_id' => 'exists:categorias,id',
+        ]);
+
+        $material = Material::findOrFail($id);
+        $material->update($request->all());
+        return response()->json($material);
     }
 
     /**
