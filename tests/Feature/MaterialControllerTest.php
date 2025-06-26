@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('dadounmaterialetc', function () {
+test('DadoUnMaterialQueNoExiste_insertarMaterial_FuncionaCorrectamente', function () {
     // Ejecuta las migraciones antes de la prueba
     $this->artisan('migrate');
 
