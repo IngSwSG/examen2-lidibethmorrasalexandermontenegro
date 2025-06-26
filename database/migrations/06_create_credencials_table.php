@@ -6,26 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('requisicions', function (Blueprint $table) {
+        Schema::create('credencials', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha');
-            $table->string('estado');
-            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->string('nombre_usuario');
+            $table->string('contrasena');
+            $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('requisicions');
+        Schema::dropIfExists('credencials');
     }
 };
