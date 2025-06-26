@@ -11,7 +11,8 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        $materials = Material::with('categoria')->get();
+        return response()->json($materials);
     }
 
     /**
